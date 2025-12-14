@@ -1,18 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
     <title>To Do List</title>
-</head>
-<body>
+  </head>
+  <body>
     
     <div class="add-list">
-        <input type="text" placeholder="Add a item">
-        <button class="add">Add</button>
+      <input type="text" placeholder="Add a item" />
+      <button class="add">Add</button>
+    </div>
+
+    <div class="list-items">
+      <ul>
+        <li>
+          <div class="item">
+            <input type="checkbox" id="checkbox" />
+            <label for="checkbox">Reading a book</label>
+          </div>
+          <div class="icons">
+            <i class="bi bi-trash3"></i>
+            <i class="bi bi-pencil-square"></i>
+            <i class="bi bi-star"></i>
+          </div>
+        </li>
+      </ul>
     </div>
 
     <script src="script.js"></script>
-</body>
+  </body>
 </html>

@@ -41,3 +41,36 @@ body{
 .add-list .add:hover{
     background-color: blue;
 }
+.list-items{
+    max-width: 500px;
+    width: 100%;
+}
+.list-items ul{
+    background: white;
+    border-radius: 7px;
+    margin-top: 20px;
+    width: 100%;
+}
+.list-items ul li .item{
+    font-size: 1.1rem;
+}
+.list-items ul li div{
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+.list-items ul li{
+ list-style: none;
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ gap: 5px;
+ padding: 10px;
+ width: 100%;
+}
+.list-items ul li .icons i{
+    cursor: pointer;
+    font-size: 1.2rem;
+}

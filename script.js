@@ -56,6 +56,7 @@ function renderItems() {
     });
   });
 }
+//trash
 list_items.addEventListener("click", (e) => {
   if (e.target.classList.contains("bi-trash3")) {
     const id = e.target.dataset.id;
@@ -64,5 +65,21 @@ list_items.addEventListener("click", (e) => {
     renderItems();
   }
 });
+//edit
+list_items.addEventListener("click", (e) => {
+  if (e.target.classList.contains("bi-pencil-square")) {
+    const id = e.target.dataset.id;
+    const itemIndex = items.findIndex(item => item.id == id);
+    if (itemIndex !== -1) {
+      const item = items[itemIndex]; 
+      items.splice(itemIndex, 1); 
+      localStorage.setItem("items", JSON.stringify(items));
+      renderItems(); 
+      inputItem.value = item.text; 
+      inputItem.focus(); 
+    }
+  }
+});
+
 
 window.addEventListener("load", renderItems);

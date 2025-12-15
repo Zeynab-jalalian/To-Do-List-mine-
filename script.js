@@ -3,6 +3,7 @@ const add = document.querySelector(".add");
 const list_items = document.querySelector(".list-items ul");
 
 let items = JSON.parse(localStorage.getItem("items") || "[]");
+inputItem.focus();
 
 add.addEventListener("click", () => {
   if (inputItem.value.trim() === "") return;
@@ -18,6 +19,7 @@ add.addEventListener("click", () => {
 
   inputItem.value = "";
   renderItems();
+  inputItem.focus();
 });
 
 function renderItems() {
@@ -54,5 +56,13 @@ function renderItems() {
     });
   });
 }
+list_items.addEventListener("click", (e) => {
+  if (e.target.classList.contains("bi-trash3")) {
+    const id = e.target.dataset.id;
+    items = items.filter((item) => item.id != id);
+    localStorage.setItem("items", JSON.stringify(items));
+    renderItems();
+  }
+});
 
-window.addEventListener("load", renderItems); 
+window.addEventListener("load", renderItems);

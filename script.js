@@ -12,6 +12,7 @@ add.addEventListener("click", () => {
     text: inputItem.value,
     checked: false,
     id: Date.now(),
+    starred: false,
   };
 
   items.push(newItem);
@@ -44,7 +45,9 @@ function renderItems() {
     icons.innerHTML = `
       <i class="bi bi-trash3" data-id="${item.id}"></i>
       <i class="bi bi-pencil-square" data-id="${item.id}"></i>
-      <i class="bi bi-star" data-id="${item.id}"></i>
+      <i class="bi ${
+        item.starred ? "bi-star-fill fill" : "bi-star"
+      }" data-id="${item.id}"></i>
     `;
     list.appendChild(icons);
     list_items.appendChild(list);
@@ -69,17 +72,31 @@ list_items.addEventListener("click", (e) => {
 list_items.addEventListener("click", (e) => {
   if (e.target.classList.contains("bi-pencil-square")) {
     const id = e.target.dataset.id;
-    const itemIndex = items.findIndex(item => item.id == id);
+    const itemIndex = items.findIndex((item) => item.id == id);
     if (itemIndex !== -1) {
-      const item = items[itemIndex]; 
-      items.splice(itemIndex, 1); 
+      const item = items[itemIndex];
+      items.splice(itemIndex, 1);
       localStorage.setItem("items", JSON.stringify(items));
-      renderItems(); 
-      inputItem.value = item.text; 
-      inputItem.focus(); 
+      renderItems();
+      inputItem.value = item.text;
+      inputItem.focus();
     }
   }
 });
-
-
+//star
+list_items.addEventListener("click", (e) => {
+  if (
+    e.target.classList.contains("bi-star") ||
+    e.target.classList.contains("bi-star-fill")
+  ) {
+    const id = e.target.dataset.id;
+    const itemIndex = items.findIndex((item) => item.id == id);
+    if (itemIndex !== -1) {
+      const item = items[itemIndex];
+      item.starred = !item.starred;
+      localStorage.setItem("items", JSON.stringify(items));
+      renderItems();
+    }
+  }
+});
 window.addEventListener("load", renderItems);

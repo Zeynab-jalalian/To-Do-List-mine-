@@ -56,8 +56,16 @@ function renderItems() {
     checkbox.addEventListener("change", () => {
       item.checked = checkbox.checked;
       localStorage.setItem("items", JSON.stringify(items));
+      checkAllCompleted();
     });
   });
+}
+function checkAllCompleted() {
+  if (items.length > 0 && items.every((item) => item.checked)) {
+    setTimeout(() => {
+      celebrate();
+    }, 10);
+  }
 }
 //trash
 list_items.addEventListener("click", (e) => {

@@ -3,6 +3,8 @@ const add = document.querySelector(".add");
 const list_items = document.querySelector(".list-items ul");
 
 let items = JSON.parse(localStorage.getItem("items") || "[]");
+let celebrationShown = false; 
+
 inputItem.focus();
 
 add.addEventListener("click", () => {
@@ -67,11 +69,17 @@ function renderItems() {
 }
 function checkAllCompleted() {
   if (items.length > 0 && items.every((item) => item.checked)) {
-    setTimeout(() => {
-      celebrate();
-    }, 10);
+    if (!celebrationShown) {
+      celebrationShown = true; 
+      setTimeout(() => {
+        celebrate();
+      }, 10);
+    }
+  } else {
+    celebrationShown = false; 
   }
 }
+
 //trash
 list_items.addEventListener("click", (e) => {
   if (e.target.classList.contains("bi-trash3")) {

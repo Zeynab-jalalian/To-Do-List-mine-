@@ -22,4 +22,6 @@ add.addEventListener("click", () => {
     `;
   list.appendChild(icons);
   list_items.appendChild(list);
+  
+  inputItem.value = "";
 });

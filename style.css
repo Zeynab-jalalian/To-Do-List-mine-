@@ -14,7 +14,7 @@ body {
     align-items:center;
     flex-direction: column;
     background: linear-gradient(145deg, #d0e6f6, #ffffff);
-    padding-top: 50px;
+    padding: 50px 20px;
 }
 
 /* Add item section */

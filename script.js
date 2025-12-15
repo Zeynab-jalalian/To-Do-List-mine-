@@ -22,6 +22,11 @@ add.addEventListener("click", () => {
   renderItems();
   inputItem.focus();
 });
+inputItem.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") {
+    add.click();
+  }
+});
 
 function renderItems() {
   list_items.innerHTML = "";
@@ -74,6 +79,7 @@ list_items.addEventListener("click", (e) => {
     items = items.filter((item) => item.id != id);
     localStorage.setItem("items", JSON.stringify(items));
     renderItems();
+    checkAllCompleted();
   }
 });
 //edit

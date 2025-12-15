@@ -141,7 +141,6 @@ body {
 .fill {
     color: #f5b700;
 }
-
 /* Responsive */
 @media (max-width: 600px) {
     .add-list input {
